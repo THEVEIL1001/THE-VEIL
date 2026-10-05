@@ -1,30 +1,561 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ERASURE / THE VEIL.</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:radial-gradient(circle at 50% 15%,rgba(255,255,255,.035),transparent 35%),#050505;color:#f2f2f2;font-family:"Noto Sans KR","Pretendard",Arial,sans-serif;min-height:100vh;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;background:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.01) 1px,transparent 1px);background-size:70px 70px;pointer-events:none;opacity:.18;z-index:-1}body:after{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,.75) 100%);pointer-events:none;z-index:-1}
-nav{position:fixed;top:0;left:0;width:100%;height:64px;display:flex;align-items:center;justify-content:center;background:rgba(5,5,5,.88);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:1000}.nav-inner{width:min(1200px,calc(100% - 40px));display:flex;align-items:center;justify-content:space-between}.logo{color:#fff;text-decoration:none;font-family:Georgia,"Times New Roman",serif;font-size:16px;letter-spacing:5px}.nav-links{display:flex;align-items:center;gap:27px}.nav-links a{color:#777;text-decoration:none;font-size:10px;letter-spacing:2px;transition:.25s}.nav-links a:hover,.nav-links a.active{color:#fff;text-shadow:0 0 12px rgba(255,255,255,.3)}
-.hero{min-height:620px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 20px 90px}.hero-small{color:#555;font-size:9px;letter-spacing:5px;margin-bottom:22px}.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(58px,10vw,120px);font-weight:400;letter-spacing:10px;color:#f3f3f3;text-shadow:0 0 35px rgba(255,255,255,.07)}.hero-line{width:100px;height:1px;background:#444;margin:28px 0 20px}.hero-subtitle{color:#666;font-size:10px;letter-spacing:4px}.hero-korean{margin-top:22px;color:#aaa;font-size:22px;letter-spacing:7px}.hero-description{width:min(560px,90%);margin-top:30px;color:#555;font-size:10px;line-height:2.2;letter-spacing:1px}
-.section{padding:80px 5% 110px}.container{width:min(1200px,100%);margin:0 auto}.label{color:#444;font-family:"Courier New",monospace;font-size:9px;letter-spacing:4px}.section-title{margin-top:14px;color:#eee;font-family:Georgia,"Times New Roman",serif;font-size:34px;font-weight:400;letter-spacing:6px}.section-subtitle{margin-top:12px;color:#555;font-size:9px;letter-spacing:3px}
-.profile-grid{margin-top:60px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:1050px;margin-left:auto;margin-right:auto}.profile-card{background:#080808;border:1px solid #242424;overflow:hidden;transition:.3s}.profile-card:hover{transform:translateY(-5px);border-color:#555;box-shadow:0 20px 50px rgba(0,0,0,.45)}.profile-card:last-child{grid-column:1/-1;width:calc(50% - 9px);justify-self:center}.profile-image{position:relative;width:100%;height:430px;overflow:hidden;background:radial-gradient(ellipse at center,#252525 0%,#111 40%,#050505 82%)}.profile-image img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%) brightness(.55);opacity:.75;transition:.4s}.profile-card:hover .profile-image img{filter:grayscale(80%) brightness(.82);opacity:.95;transform:scale(1.03)}.profile-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#333;font-family:"Courier New",monospace;font-size:9px;letter-spacing:4px}.profile-number{position:absolute;top:20px;left:22px;color:#555;font-family:"Courier New",monospace;font-size:8px;letter-spacing:3px}.profile-status{position:absolute;top:20px;right:22px;color:#555;font-family:"Courier New",monospace;font-size:8px;letter-spacing:3px}.profile-info{position:absolute;left:0;bottom:0;width:100%;padding:70px 28px 28px;background:linear-gradient(to top,rgba(0,0,0,.96),rgba(0,0,0,.55),transparent)}.profile-code{color:#555;font-family:"Courier New",monospace;font-size:8px;letter-spacing:3px;margin-bottom:10px}.profile-name{color:#eee;font-family:Georgia,"Times New Roman",serif;font-size:31px;font-weight:400;letter-spacing:5px}.profile-role{margin-top:9px;color:#888;font-size:11px;letter-spacing:2px}.profile-description{margin-top:15px;color:#666;font-size:10px;line-height:1.8}.profile-detail{padding:18px 25px;background:#070707}.profile-detail-row{min-height:42px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #171717;font-family:"Courier New",monospace;font-size:8px;letter-spacing:2px}.profile-detail-row:last-child{border-bottom:none}.profile-detail-row span:first-child{color:#444}.profile-detail-row span:last-child{color:#777;text-align:right}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}.about-text{color:#777;font-size:11px;line-height:2.2}.about-text strong{color:#ddd;font-weight:normal}.status-box{padding:25px;border:1px solid #252525;background:#060606}.status-row{min-height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #191919;font-size:9px;letter-spacing:2px}.status-row:last-child{border-bottom:none}.status-row span:first-child{color:#444}.status-row span:last-child{color:#888}.back{padding:60px 5%}.back a{display:inline-block;padding:15px 22px;border:1px solid #333;color:#777;text-decoration:none;font-size:9px;letter-spacing:2px;transition:.3s}.back a:hover{color:#fff;border-color:#777}footer{padding:60px 5%;text-align:center;color:#3d3d3d;font-size:9px;line-height:1.8;letter-spacing:5px}
-@media(max-width:900px){.profile-grid{max-width:760px}.profile-image{height:390px}.about{gap:45px}}@media(max-width:650px){nav{height:64px;padding:0 6%}.nav-inner{width:100%}.nav-links{display:none}.hero{min-height:75vh;padding:110px 6% 70px}.hero h1{font-size:48px;letter-spacing:6px}.hero-korean{font-size:20px;letter-spacing:6px}.section{padding:80px 6%}.profile-grid{grid-template-columns:1fr;gap:18px}.profile-card:last-child{grid-column:auto;width:100%}.profile-image{height:370px}.about{grid-template-columns:1fr;gap:40px}}@media(max-width:400px){.hero h1{font-size:40px;letter-spacing:5px}.profile-image{height:340px}.profile-name{font-size:25px}}
-</style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ERASURE / THE VEIL.</title>
+        <style>
+            * {
+            margin:0;
+            padding:0;
+            box-sizing:border-box}
+            html {
+            scroll-behavior:smooth}
+            body {
+            background:radial-gradient(circle at 50% 15%,rgba(255,255,255,.035),transparent 35%),#050505;
+            color:#f2f2f2;
+            font-family:"Noto Sans KR","Pretendard",Arial,sans-serif;
+            min-height:100vh;
+            overflow-x:hidden}
+            body:before {
+            content:"";
+            position:fixed;
+            inset:0;
+            background:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.01) 1px,transparent 1px);
+            background-size:70px 70px;
+            pointer-events:none;
+            opacity:.18;
+            z-index:-1}
+            body:after {
+            content:"";
+            position:fixed;
+            inset:0;
+            background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,.75) 100%);
+            pointer-events:none;
+            z-index:-1}
+            nav {
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:64px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:rgba(5,5,5,.88);
+            border-bottom:1px solid rgba(255,255,255,.08);
+            backdrop-filter:blur(12px);
+            -webkit-backdrop-filter:blur(12px);
+            z-index:1000}
+            .nav-inner {
+            width:min(1200px,calc(100% - 40px));
+            display:flex;
+            align-items:center;
+            justify-content:space-between}
+            .logo {
+            color:#fff;
+            text-decoration:none;
+            font-family:Georgia,"Times New Roman",serif;
+            font-size:16px;
+            letter-spacing:5px}
+            .nav-links {
+            display:flex;
+            align-items:center;
+            gap:27px}
+            .nav-links a {
+            color:#777;
+            text-decoration:none;
+            font-size:10px;
+            letter-spacing:2px;
+            transition:.25s}
+            .nav-links a:hover,.nav-links a.active {
+            color:#fff;
+            text-shadow:0 0 12px rgba(255,255,255,.3)}
+            .hero {
+            min-height:620px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            padding:110px 20px 90px}
+            .hero-small {
+            color:#555;
+            font-size:9px;
+            letter-spacing:5px;
+            margin-bottom:22px}
+            .hero h1 {
+            font-family:Georgia,"Times New Roman",serif;
+            font-size:clamp(58px,10vw,120px);
+            font-weight:400;
+            letter-spacing:10px;
+            color:#f3f3f3;
+            text-shadow:0 0 35px rgba(255,255,255,.07)}
+            .hero-line {
+            width:100px;
+            height:1px;
+            background:#444;
+            margin:28px 0 20px}
+            .hero-subtitle {
+            color:#666;
+            font-size:10px;
+            letter-spacing:4px}
+            .hero-korean {
+            margin-top:22px;
+            color:#aaa;
+            font-size:22px;
+            letter-spacing:7px}
+            .hero-description {
+            width:min(560px,90%);
+            margin-top:30px;
+            color:#555;
+            font-size:10px;
+            line-height:2.2;
+            letter-spacing:1px}
+            .section {
+            padding:80px 5% 110px}
+            .container {
+            width:min(1200px,100%);
+            margin:0 auto}
+            .label {
+            color:#444;
+            font-family:"Courier New",monospace;
+            font-size:9px;
+            letter-spacing:4px}
+            .section-title {
+            margin-top:14px;
+            color:#eee;
+            font-family:Georgia,"Times New Roman",serif;
+            font-size:34px;
+            font-weight:400;
+            letter-spacing:6px}
+            .section-subtitle {
+            margin-top:12px;
+            color:#555;
+            font-size:9px;
+            letter-spacing:3px}
+            .profile-grid {
+            margin-top:60px;
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:18px;
+            max-width:1050px;
+            margin-left:auto;
+            margin-right:auto}
+            .profile-card {
+            background:#080808;
+            border:1px solid #242424;
+            overflow:hidden;
+            transition:.3s}
+            .profile-card:hover {
+            transform:translateY(-5px);
+            border-color:#555;
+            box-shadow:0 20px 50px rgba(0,0,0,.45)}
+            .profile-card:last-child {
+            grid-column:1/-1;
+            width:calc(50% - 9px);
+            justify-self:center}
+            .profile-image {
+            position:relative;
+            width:100%;
+            height:430px;
+            overflow:hidden;
+            background:radial-gradient(ellipse at center,#252525 0%,#111 40%,#050505 82%)}
+            .profile-image img {
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+            filter:grayscale(100%) brightness(.55);
+            opacity:.75;
+            transition:.4s}
+            .profile-card:hover .profile-image img {
+            filter:grayscale(80%) brightness(.82);
+            opacity:.95;
+            transform:scale(1.03)}
+            .profile-placeholder {
+            position:absolute;
+            inset:0;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#333;
+            font-family:"Courier New",monospace;
+            font-size:9px;
+            letter-spacing:4px}
+            .profile-number {
+            position:absolute;
+            top:20px;
+            left:22px;
+            color:#555;
+            font-family:"Courier New",monospace;
+            font-size:8px;
+            letter-spacing:3px}
+            .profile-status {
+            position:absolute;
+            top:20px;
+            right:22px;
+            color:#555;
+            font-family:"Courier New",monospace;
+            font-size:8px;
+            letter-spacing:3px}
+            .profile-info {
+            position:absolute;
+            left:0;
+            bottom:0;
+            width:100%;
+            padding:70px 28px 28px;
+            background:linear-gradient(to top,rgba(0,0,0,.96),rgba(0,0,0,.55),transparent)}
+            .profile-code {
+            color:#555;
+            font-family:"Courier New",monospace;
+            font-size:8px;
+            letter-spacing:3px;
+            margin-bottom:10px}
+            .profile-name {
+            color:#eee;
+            font-family:Georgia,"Times New Roman",serif;
+            font-size:31px;
+            font-weight:400;
+            letter-spacing:5px}
+            .profile-role {
+            margin-top:9px;
+            color:#888;
+            font-size:11px;
+            letter-spacing:2px}
+            .profile-description {
+            margin-top:15px;
+            color:#666;
+            font-size:10px;
+            line-height:1.8}
+            .profile-detail {
+            padding:18px 25px;
+            background:#070707}
+            .profile-detail-row {
+            min-height:42px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            border-bottom:1px solid #171717;
+            font-family:"Courier New",monospace;
+            font-size:8px;
+            letter-spacing:2px}
+            .profile-detail-row:last-child {
+            border-bottom:none}
+            .profile-detail-row span:first-child {
+            color:#444}
+            .profile-detail-row span:last-child {
+            color:#777;
+            text-align:right}
+            .about {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:80px;
+            margin-top:60px}
+            .about-text {
+            color:#777;
+            font-size:11px;
+            line-height:2.2}
+            .about-text strong {
+            color:#ddd;
+            font-weight:normal}
+            .status-box {
+            padding:25px;
+            border:1px solid #252525;
+            background:#060606}
+            .status-row {
+            min-height:48px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            border-bottom:1px solid #191919;
+            font-size:9px;
+            letter-spacing:2px}
+            .status-row:last-child {
+            border-bottom:none}
+            .status-row span:first-child {
+            color:#444}
+            .status-row span:last-child {
+            color:#888}
+            .back {
+            padding:60px 5%}
+            .back a {
+            display:inline-block;
+            padding:15px 22px;
+            border:1px solid #333;
+            color:#777;
+            text-decoration:none;
+            font-size:9px;
+            letter-spacing:2px;
+            transition:.3s}
+            .back a:hover {
+            color:#fff;
+            border-color:#777}
+            footer {
+            padding:60px 5%;
+            text-align:center;
+            color:#3d3d3d;
+            font-size:9px;
+            line-height:1.8;
+            letter-spacing:5px}
+            @media(max-width:900px) {
+            .profile-grid {
+            max-width:760px}
+            .profile-image {
+            height:390px}
+            .about {
+            gap:45px}
+            }
+            @media(max-width:650px) {
+            nav {
+            height:64px;
+            padding:0 6%}
+            .nav-inner {
+            width:100%}
+            .nav-links {
+            display:none}
+            .hero {
+            min-height:75vh;
+            padding:110px 6% 70px}
+            .hero h1 {
+            font-size:48px;
+            letter-spacing:6px}
+            .hero-korean {
+            font-size:20px;
+            letter-spacing:6px}
+            .section {
+            padding:80px 6%}
+            .profile-grid {
+            grid-template-columns:1fr;
+            gap:18px}
+            .profile-card:last-child {
+            grid-column:auto;
+            width:100%}
+            .profile-image {
+            height:370px}
+            .about {
+            grid-template-columns:1fr;
+            gap:40px}
+            }
+            @media(max-width:400px) {
+            .hero h1 {
+            font-size:40px;
+            letter-spacing:5px}
+            .profile-image {
+            height:340px}
+            .profile-name {
+            font-size:25px}
+            }
+        </style>
 </head>
 <body>
-<nav><div class="nav-inner"><a href="index.html" class="logo">THE VEIL.</a><div class="nav-links"><a href="conclave.html">CONCLAVE</a><a href="field.html">FIELD</a><a href="intel.html">INTEL</a><a href="support.html">SUPPORT</a><a href="process.html" class="active">PROCESS</a></div></div></nav>
-<section class="hero"><div class="hero-small">DIVISION // 04</div><h1>PROCESS</h1><div class="hero-line"></div><div class="hero-subtitle">PROCESS DIVISION</div><div class="hero-korean">지운다.</div><div class="hero-description">THE VEIL.의 모든 흔적을 지우는 조직.<br><br>시신과 증거, 현장에 남은 모든 흔적을 처리한다.<br><br>계약이 끝난 뒤에도 마지막까지 임무를 완성한다.</div></section>
-<section class="section"><div class="container"><div class="label">PROCESS DIVISION</div><div class="section-title">OPERATIVES</div><div class="section-subtitle">FIVE POSITIONS // THREE SPECIALTIES</div><div class="profile-grid">
-<div class="profile-card"><div class="profile-image"><img src="images/mortis01.jpg" alt="MORTIS 01" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="profile-placeholder" style="display:none">PROFILE IMAGE</div><div class="profile-number">PROCESS // 01</div><div class="profile-status">MORTIS // 01</div><div class="profile-info"><div class="profile-code">MORTIS / 01</div><div class="profile-name">MORTIS</div><div class="profile-role">시신 처리 담당</div><div class="profile-description">처리부의 시신 처리 직책. 사망자의 신원과 상태를 확인하고 최종 처리를 담당한다.</div></div></div><div class="profile-detail"><div class="profile-detail-row"><span>POSITION</span><span>MORTIS</span></div><div class="profile-detail-row"><span>SLOTS</span><span>01 / 03</span></div></div></div>
-<div class="profile-card"><div class="profile-image"><img src="images/mortis02.jpg" alt="MORTIS 02" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="profile-placeholder" style="display:none">PROFILE IMAGE</div><div class="profile-number">PROCESS // 02</div><div class="profile-status">MORTIS // 02</div><div class="profile-info"><div class="profile-code">MORTIS / 02</div><div class="profile-name">MORTIS</div><div class="profile-role">시신 처리 담당</div><div class="profile-description">처리부의 시신 처리 직책. 사망자의 신원과 상태를 확인하고 최종 처리를 담당한다.</div></div></div><div class="profile-detail"><div class="profile-detail-row"><span>POSITION</span><span>MORTIS</span></div><div class="profile-detail-row"><span>SLOTS</span><span>02 / 03</span></div></div></div>
-<div class="profile-card"><div class="profile-image"><img src="images/mortis03.jpg" alt="MORTIS 03" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="profile-placeholder" style="display:none">PROFILE IMAGE</div><div class="profile-number">PROCESS // 03</div><div class="profile-status">MORTIS // 03</div><div class="profile-info"><div class="profile-code">MORTIS / 03</div><div class="profile-name">MORTIS</div><div class="profile-role">시신 처리 담당</div><div class="profile-description">처리부의 시신 처리 직책. 사망자의 신원과 상태를 확인하고 최종 처리를 담당한다.</div></div></div><div class="profile-detail"><div class="profile-detail-row"><span>POSITION</span><span>MORTIS</span></div><div class="profile-detail-row"><span>SLOTS</span><span>03 / 03</span></div></div></div>
-<div class="profile-card"><div class="profile-image"><img src="images/facsimile.jpg" alt="FACSIMILE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="profile-placeholder" style="display:none">PROFILE IMAGE</div><div class="profile-number">PROCESS // 04</div><div class="profile-status">FACSIMILE // 01</div><div class="profile-info"><div class="profile-code">FACSIMILE / 01</div><div class="profile-name">FACSIMILE</div><div class="profile-role">증거 및 기록 처리 담당</div><div class="profile-description">사건과 관련된 기록과 물증을 정리하고 현장에 남은 흔적을 처리한다.</div></div></div><div class="profile-detail"><div class="profile-detail-row"><span>POSITION</span><span>FACSIMILE</span></div><div class="profile-detail-row"><span>SLOTS</span><span>01 / 01</span></div></div></div>
-<div class="profile-card"><div class="profile-image"><img src="images/mirage.jpg" alt="MIRAGE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="profile-placeholder" style="display:none">PROFILE IMAGE</div><div class="profile-number">PROCESS // 05</div><div class="profile-status">MIRAGE // 01</div><div class="profile-info"><div class="profile-code">MIRAGE / 01</div><div class="profile-name">MIRAGE</div><div class="profile-role">현장 및 신원 처리 담당</div><div class="profile-description">사건 이후 현장과 신원을 정리하고 외부에 남을 흔적을 최소화한다.</div></div></div><div class="profile-detail"><div class="profile-detail-row"><span>POSITION</span><span>MIRAGE</span></div><div class="profile-detail-row"><span>SLOTS</span><span>01 / 01</span></div></div></div>
-</div></div></section>
-<section class="section"><div class="container"><div class="label">PROCESS DIVISION</div><div class="section-title">ABOUT</div><div class="about"><div class="about-text">처리부는 <strong>THE VEIL.</strong>의 마지막 단계다.<br><br>계약이 완료된 이후에도 조직의 흔적이 남아서는 안 된다.<br><br>MORTIS는 시신을, FACSIMILE은 증거와 기록을, MIRAGE는 현장과 신원을 담당한다.<br><br>모든 것이 끝난 뒤, 아무것도 남지 않게 한다.</div><div class="status-box"><div class="status-row"><span>DIVISION</span><span>PROCESS / 04</span></div><div class="status-row"><span>OPERATIVES</span><span>05</span></div><div class="status-row"><span>MORTIS</span><span>03</span></div><div class="status-row"><span>FACSIMILE</span><span>01</span></div><div class="status-row"><span>MIRAGE</span><span>01</span></div><div class="status-row"><span>COMMAND</span><span>CONCLAVE</span></div></div></div></div></section>
-<div class="back"><a href="index.html">← BACK TO THE VEIL.</a></div>
-<footer>THE VEIL.<br><br>DISCIPLINE. UNITY. SILENCE.<br><br>PROCESS DIVISION // 04</footer>
-</body></html>
+    <!-- =========================================================
+    01. NAVIGATION
+    ========================================================= -->
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">THE VEIL.</a>
+            <div class="nav-links">
+                <a href="conclave.html">CONCLAVE</a>
+                <a href="field.html">FIELD</a>
+                <a href="intel.html">INTEL</a>
+                <a href="support.html">SUPPORT</a>
+                <a href="process.html" class="active">PROCESS</a>
+            </div>
+    </div>
+</nav>
+<!-- =========================================================
+02. HERO / PROCESS INTRODUCTION
+========================================================= -->
+<section class="hero">
+    <div class="hero-small">DIVISION // 04</div>
+    <h1>PROCESS</h1>
+    <div class="hero-line">
+    </div>
+<div class="hero-subtitle">PROCESS DIVISION</div>
+<div class="hero-korean">지운다.</div>
+<div class="hero-description">THE VEIL.의 모든 흔적을 지우는 조직.<br>
+    <br>시신과 증거, 현장에 남은 모든 흔적을 처리한다.<br>
+    <br>계약이 끝난 뒤에도 마지막까지 임무를 완성한다.</div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="label">PROCESS DIVISION</div>
+        <div class="section-title">OPERATIVES</div>
+        <div class="section-subtitle">FIVE POSITIONS // THREE SPECIALTIES</div>
+        <div class="profile-grid">
+            <div class="profile-card">
+                <div class="profile-image">
+                    <img src="images/mortis01.jpg" alt="MORTIS 01" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <div class="profile-placeholder" style="display:none">PROFILE IMAGE</div>
+                    <div class="profile-number">PROCESS // 01</div>
+                    <div class="profile-status">MORTIS // 01</div>
+                    <div class="profile-info">
+                        <div class="profile-code">MORTIS / 01</div>
+                        <div class="profile-name">MORTIS</div>
+                        <div class="profile-role">시신 처리 담당</div>
+                        <div class="profile-description">처리부의 시신 처리 직책. 사망자의 신원과 상태를 확인하고 최종 처리를 담당한다.</div>
+                    </div>
+            </div>
+        <div class="profile-detail">
+            <div class="profile-detail-row">
+                <span>POSITION</span>
+                <span>MORTIS</span>
+            </div>
+        <div class="profile-detail-row">
+            <span>SLOTS</span>
+            <span>01 / 03</span>
+        </div>
+</div>
+</div>
+<div class="profile-card">
+    <div class="profile-image">
+        <img src="images/mortis02.jpg" alt="MORTIS 02" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="profile-placeholder" style="display:none">PROFILE IMAGE</div>
+        <div class="profile-number">PROCESS // 02</div>
+        <div class="profile-status">MORTIS // 02</div>
+        <div class="profile-info">
+            <div class="profile-code">MORTIS / 02</div>
+            <div class="profile-name">MORTIS</div>
+            <div class="profile-role">시신 처리 담당</div>
+            <div class="profile-description">처리부의 시신 처리 직책. 사망자의 신원과 상태를 확인하고 최종 처리를 담당한다.</div>
+        </div>
+</div>
+<div class="profile-detail">
+    <div class="profile-detail-row">
+        <span>POSITION</span>
+        <span>MORTIS</span>
+    </div>
+<div class="profile-detail-row">
+    <span>SLOTS</span>
+    <span>02 / 03</span>
+</div>
+</div>
+</div>
+<div class="profile-card">
+    <div class="profile-image">
+        <img src="images/mortis03.jpg" alt="MORTIS 03" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="profile-placeholder" style="display:none">PROFILE IMAGE</div>
+        <div class="profile-number">PROCESS // 03</div>
+        <div class="profile-status">MORTIS // 03</div>
+        <div class="profile-info">
+            <div class="profile-code">MORTIS / 03</div>
+            <div class="profile-name">MORTIS</div>
+            <div class="profile-role">시신 처리 담당</div>
+            <div class="profile-description">처리부의 시신 처리 직책. 사망자의 신원과 상태를 확인하고 최종 처리를 담당한다.</div>
+        </div>
+</div>
+<div class="profile-detail">
+    <div class="profile-detail-row">
+        <span>POSITION</span>
+        <span>MORTIS</span>
+    </div>
+<div class="profile-detail-row">
+    <span>SLOTS</span>
+    <span>03 / 03</span>
+</div>
+</div>
+</div>
+<div class="profile-card">
+    <div class="profile-image">
+        <img src="images/facsimile.jpg" alt="FACSIMILE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="profile-placeholder" style="display:none">PROFILE IMAGE</div>
+        <div class="profile-number">PROCESS // 04</div>
+        <div class="profile-status">FACSIMILE // 01</div>
+        <div class="profile-info">
+            <div class="profile-code">FACSIMILE / 01</div>
+            <div class="profile-name">FACSIMILE</div>
+            <div class="profile-role">증거 및 기록 처리 담당</div>
+            <div class="profile-description">사건과 관련된 기록과 물증을 정리하고 현장에 남은 흔적을 처리한다.</div>
+        </div>
+</div>
+<div class="profile-detail">
+    <div class="profile-detail-row">
+        <span>POSITION</span>
+        <span>FACSIMILE</span>
+    </div>
+<div class="profile-detail-row">
+    <span>SLOTS</span>
+    <span>01 / 01</span>
+</div>
+</div>
+</div>
+<div class="profile-card">
+    <div class="profile-image">
+        <img src="images/mirage.jpg" alt="MIRAGE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="profile-placeholder" style="display:none">PROFILE IMAGE</div>
+        <div class="profile-number">PROCESS // 05</div>
+        <div class="profile-status">MIRAGE // 01</div>
+        <div class="profile-info">
+            <div class="profile-code">MIRAGE / 01</div>
+            <div class="profile-name">MIRAGE</div>
+            <div class="profile-role">현장 및 신원 처리 담당</div>
+            <div class="profile-description">사건 이후 현장과 신원을 정리하고 외부에 남을 흔적을 최소화한다.</div>
+        </div>
+</div>
+<div class="profile-detail">
+    <div class="profile-detail-row">
+        <span>POSITION</span>
+        <span>MIRAGE</span>
+    </div>
+<div class="profile-detail-row">
+    <span>SLOTS</span>
+    <span>01 / 01</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="label">PROCESS DIVISION</div>
+        <div class="section-title">ABOUT</div>
+        <div class="about">
+            <div class="about-text">처리부는 <strong>THE VEIL.</strong>의 마지막 단계다.<br>
+                <br>계약이 완료된 이후에도 조직의 흔적이 남아서는 안 된다.<br>
+                <br>MORTIS는 시신을, FACSIMILE은 증거와 기록을, MIRAGE는 현장과 신원을 담당한다.<br>
+                <br>모든 것이 끝난 뒤, 아무것도 남지 않게 한다.</div>
+            <div class="status-box">
+                <div class="status-row">
+                    <span>DIVISION</span>
+                    <span>PROCESS / 04</span>
+                </div>
+            <div class="status-row">
+                <span>OPERATIVES</span>
+                <span>05</span>
+            </div>
+        <div class="status-row">
+            <span>MORTIS</span>
+            <span>03</span>
+        </div>
+    <div class="status-row">
+        <span>FACSIMILE</span>
+        <span>01</span>
+    </div>
+<div class="status-row">
+    <span>MIRAGE</span>
+    <span>01</span>
+</div>
+<div class="status-row">
+    <span>COMMAND</span>
+    <span>CONCLAVE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================
+05. BACK BUTTON
+========================================================= -->
+<div class="back">
+    <a href="index.html">← BACK TO THE VEIL.</a>
+</div>
+<!-- =========================================================
+06. FOOTER
+========================================================= -->
+<footer>THE VEIL.<br>
+    <br>DISCIPLINE. UNITY. SILENCE.<br>
+    <br>PROCESS DIVISION // 04</footer>
+</body>
+</html>
