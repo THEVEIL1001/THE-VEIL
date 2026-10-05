@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -520,14 +521,10 @@ nav {
    ABOUT
 ========================= */
 
+/* 수정: 제목 아래에 내용이 오도록 1열 구조 */
+
 .about {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 80px;
-
-    align-items: start;
+    display: block;
 }
 
 .about-title {
@@ -543,6 +540,8 @@ nav {
     line-height: 2;
 
     letter-spacing: 0.05em;
+
+    margin-top: 30px;
 }
 
 /* =========================
@@ -663,8 +662,7 @@ footer {
     }
 
     .about {
-        grid-template-columns: 1fr;
-        gap: 35px;
+        display: block;
     }
 }
 
@@ -1294,84 +1292,91 @@ footer {
                 <div class="label">
                 </div>
 
-                <div class="about-title">
+                <div class="section-title">
                     CONCLAVE DISPATCH
-                    
-         <div class="about-text">
+                </div>
 
-                <br>없음.<br>
+               
+
+                <div class="about-text">
+
+                    <br>
+                    없음
+                    <br>
+
+                </div>
 
                 <strong></strong>
 
             </div>
 
-        </div>
 
+            <!-- STATUS -->
 
-        <!-- STATUS -->
+            <div class="status-box">
 
-        <div class="status-box">
+                <div class="status-item">
 
-            <div class="status-item">
+                    <div class="status-label">
+                        DIVISION
+                    </div>
 
-                <div class="status-label">
-                    DIVISION
+                    <div class="status-value">
+                        LOGISTICS / 03
+                    </div>
+
                 </div>
 
-                <div class="status-value">
-                    LOGISTICS / 03
+
+                <div class="status-item">
+
+                    <div class="status-label">
+                        OPERATIVES
+                    </div>
+
+                    <div class="status-value">
+                        05
+                    </div>
+
                 </div>
 
-            </div>
 
+                <div class="status-item">
 
-            <div class="status-item">
+                    <div class="status-label">
+                        MIRROR
+                    </div>
 
-                <div class="status-label">
-                    OPERATIVES
+                    <div class="status-value">
+                        02
+                    </div>
+
                 </div>
 
-                <div class="status-value">
-                    05
+
+                <div class="status-item">
+
+                    <div class="status-label">
+                        LOGISTICS
+                    </div>
+
+                    <div class="status-value">
+                        05
+                    </div>
+
                 </div>
 
-            </div>
 
+                <div class="status-item">
 
-            <div class="status-item">
+                    <div class="status-label">
+                        COMMAND
+                    </div>
 
-                <div class="status-label">
-                    MIRROR
-                </div>
+                    <div class="status-value">
+                        ARCHON
+                    </div>
 
-                <div class="status-value">
-                    02
-                </div>
-
-            </div>
-
-
-            <div class="status-item">
-
-                <div class="status-label">
-                    LOGISTICS
-                </div>
-
-                <div class="status-value">
-                    05
-                </div>
-
-            </div>
-
-
-            <div class="status-item">
-
-                <div class="status-label">
-                    COMMAND
-                </div>
-
-                <div class="status-value">
-                    ARCHON
                 </div>
 
             </div>
@@ -1418,3 +1423,4 @@ footer {
 
 </body>
 </html>
+```
